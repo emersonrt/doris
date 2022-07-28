@@ -30,10 +30,10 @@ public class CandidatoController {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @PostConstruct
-    public void init() {
-        service = new Assistant( assistantVersionDate );
-    }
+//    @PostConstruct
+//    public void init() {
+//        service = new Assistant( assistantVersionDate );
+//    }
 
     @PostMapping("teste")
     public String teste(@RequestParam String aa) {
@@ -52,8 +52,8 @@ public class CandidatoController {
             MessageOptions options =
                     new MessageOptions.Builder( assistantWorkspace ).build();
 
-            Response<MessageResponse> response = service.message(options).execute();
-            return response;
+//            Response<MessageResponse> response = service.message(options).execute();
+            return null;
 
         } catch (NotFoundException e) {
             log.error("NotFoundException", e);
