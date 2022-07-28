@@ -11,7 +11,7 @@
 	<groupId>com.emerson</groupId>
 	<artifactId>doris</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>doris</name>
 	<description>Aplicação backend para aplicação da Dóris no processo de recrutamento.</description>
 	<dependencies>
