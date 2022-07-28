@@ -26,12 +26,6 @@ public class CandidatoController {
     @Value("${ibm.assistant.workspace.id}")
     private String assistantWorkspace;
 
-    @Value("${ibm.assistant.username}")
-    private String assistantUser;
-
-    @Value("${ibm.assistant.password}")
-    private String assistantPass;
-
     private Assistant service;
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
