@@ -4,11 +4,10 @@ import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.NotFoundException;
 import com.ibm.cloud.sdk.core.service.exception.RequestTooLargeException;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
-import com.ibm.watson.assistant.v1.Assistant;
-import com.ibm.watson.assistant.v1.model.MessageInput;
-import com.ibm.watson.assistant.v1.model.MessageOptions;
-import com.ibm.watson.assistant.v1.model.MessageResponse;
 
+import com.ibm.watson.assistant.v2.model.MessageInput;
+import com.ibm.watson.assistant.v2.model.MessageOptions;
+import com.ibm.watson.assistant.v2.model.MessageResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +25,7 @@ public class CandidatoController {
     @Value("${ibm.assistant.workspace.id}")
     private String assistantWorkspace;
 
-    private Assistant service;
+//    private Assistant service;
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -44,13 +43,16 @@ public class CandidatoController {
     public Response<MessageResponse> postMessage(@RequestBody MessageInput messageInput) {
         try {
 
-            String text = (messageInput.getText() == null) ? "" : messageInput.getText();
+            String text = (messageInput.text() == null) ? "" : messageInput.text();
+            String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
+            String suggestionIdType = (messageInput.suggestionId() == null) ? "" : messageInput.suggestionId();
 
             log.info("text", text);
-            log.info("messageInput.getProperties().toString(): ", messageInput.getProperties().toString());
+            log.info("messageType", messageType);
+            log.info("suggestionIdType", suggestionIdType);
 
-            MessageOptions options =
-                    new MessageOptions.Builder( assistantWorkspace ).build();
+//            MessageOptions options =
+//                    new MessageOptions.Builder( assistantWorkspace,  ).build();
 
 //            Response<MessageResponse> response = service.message(options).execute();
             return null;
