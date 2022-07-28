@@ -1,17 +1,76 @@
 package com.emerson.doris.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.ibm.cloud.sdk.core.http.Response;
+import com.ibm.cloud.sdk.core.service.exception.NotFoundException;
+import com.ibm.cloud.sdk.core.service.exception.RequestTooLargeException;
+import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
+import com.ibm.watson.assistant.v1.Assistant;
+import com.ibm.watson.assistant.v1.model.MessageInput;
+import com.ibm.watson.assistant.v1.model.MessageOptions;
+import com.ibm.watson.assistant.v1.model.MessageResponse;
 
-@Controller
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.PostConstruct;
+
+@RestController
 @RequestMapping("candidato")
 public class CandidatoController {
 
-    @RequestMapping("teste")
-    @ResponseBody
-    public String teste() {
+    @Value("${ibm.assistant.version.date}")
+    private String assistantVersionDate;
+
+    @Value("${ibm.assistant.workspace.id}")
+    private String assistantWorkspace;
+
+    @Value("${ibm.assistant.username}")
+    private String assistantUser;
+
+    @Value("${ibm.assistant.password}")
+    private String assistantPass;
+
+    private Assistant service;
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+    @PostConstruct
+    public void init() {
+        service = new Assistant( assistantVersionDate );
+    }
+
+    @PostMapping("teste")
+    public String teste(@RequestParam String aa) {
         return "Hello World!!!";
+    }
+
+    @PostMapping("/api/message")
+    public Response<MessageResponse> postMessage(@RequestBody MessageInput messageInput) {
+        try {
+
+            String text = (messageInput.getText() == null) ? "" : messageInput.getText();
+
+            log.info("text", text);
+            log.info("messageInput.getProperties().toString(): ", messageInput.getProperties().toString());
+
+            MessageOptions options =
+                    new MessageOptions.Builder( assistantWorkspace ).build();
+
+            Response<MessageResponse> response = service.message(options).execute();
+            return response;
+
+        } catch (NotFoundException e) {
+            log.error("NotFoundException", e);
+            throw e;
+        } catch (RequestTooLargeException e) {
+            log.error("RequestTooLargeException", e);
+            throw e;
+        } catch (ServiceResponseException e) {
+            log.error("ServiceResponseException", e);
+            throw e;
+        }
     }
 
 }
