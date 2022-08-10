@@ -34,7 +34,7 @@ public class LogRequestFilter implements Filter {
     }
 
     private String readInputStreamInStringFormat(InputStream stream, Charset charset) throws IOException {
-        final int MAX_BODY_SIZE = 50000;
+        final int MAX_BODY_SIZE = 1024;
         final StringBuilder bodyStringBuilder = new StringBuilder();
         if (!stream.markSupported()) {
             stream = new BufferedInputStream(stream);
