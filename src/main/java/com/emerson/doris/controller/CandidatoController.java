@@ -43,6 +43,8 @@ public class CandidatoController {
     public Response<MessageResponse> postMessage(@RequestBody MessageInput messageInput /*DESCOBRIR O QUE BOTAR AQUI*/) {
         try {
 
+            System.out.println("teste 1");
+
             String text = (messageInput.text() == null) ? "" : messageInput.text();
             String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
             String suggestionIdType = (messageInput.suggestionId() == null) ? "" : messageInput.suggestionId();
