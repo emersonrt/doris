@@ -34,13 +34,13 @@ public class CandidatoController {
 //        service = new Assistant( assistantVersionDate );
 //    }
 
-    @PostMapping("teste")
-    public String teste(@RequestParam String aa) {
+    @GetMapping("teste")
+    public String teste() {
         return "Hello World!!!";
     }
 
     @PostMapping("/api/message")
-    public Response<MessageResponse> postMessage(@RequestBody MessageInput messageInput) {
+    public Response<MessageResponse> postMessage(@RequestBody MessageInput messageInput /*DESCOBRIR O QUE BOTAR AQUI*/) {
         try {
 
             String text = (messageInput.text() == null) ? "" : messageInput.text();
