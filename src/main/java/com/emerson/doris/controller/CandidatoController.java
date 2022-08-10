@@ -4,16 +4,15 @@ import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.NotFoundException;
 import com.ibm.cloud.sdk.core.service.exception.RequestTooLargeException;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
-
-import com.ibm.watson.assistant.v2.model.MessageInput;
-import com.ibm.watson.assistant.v2.model.MessageOptions;
 import com.ibm.watson.assistant.v2.model.MessageResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.PostConstruct;
+import org.springframework.http.HttpEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("candidato")
@@ -40,18 +39,19 @@ public class CandidatoController {
     }
 
     @PostMapping("/api/message")
-    public Response<MessageResponse> postMessage(@RequestBody MessageInput messageInput /*DESCOBRIR O QUE BOTAR AQUI*/) {
+    public Response<MessageResponse> postMessage(HttpEntity<byte[]> requestEntity) {
         try {
 
-            System.out.println("teste 1");
+            log.info("aaaaa: ", requestEntity.getBody());
+            log.info("aaaaa: ", requestEntity.getHeaders());
 
-            String text = (messageInput.text() == null) ? "" : messageInput.text();
-            String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
-            String suggestionIdType = (messageInput.suggestionId() == null) ? "" : messageInput.suggestionId();
+//            String text = (messageInput.text() == null) ? "" : messageInput.text();
+//            String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
+//            String suggestionIdType = (messageInput.suggestionId() == null) ? "" : messageInput.suggestionId();
 
-            log.info("text", text);
-            log.info("messageType", messageType);
-            log.info("suggestionIdType", suggestionIdType);
+//            log.info("text", text);
+//            log.info("messageType", messageType);
+//            log.info("suggestionIdType", suggestionIdType);
 
 //            MessageOptions options =
 //                    new MessageOptions.Builder( assistantWorkspace,  ).build();
