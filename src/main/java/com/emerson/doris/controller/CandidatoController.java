@@ -9,10 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("candidato")
@@ -39,11 +36,11 @@ public class CandidatoController {
     }
 
     @PostMapping("/api/message")
-    public Response<MessageResponse> postMessage(HttpEntity<byte[]> requestEntity) {
+    public Response<MessageResponse> postMessage(@RequestBody MessageResponse response) {
         try {
 
-            log.info("aaaaa: ", requestEntity.getBody());
-            log.info("aaaaa: ", requestEntity.getHeaders());
+            log.info("aaaaa: ", response.getContext());
+            log.info("aaaaa: ", response.getOutput());
 
 //            String text = (messageInput.text() == null) ? "" : messageInput.text();
 //            String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
