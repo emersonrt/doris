@@ -4,6 +4,7 @@ import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.NotFoundException;
 import com.ibm.cloud.sdk.core.service.exception.RequestTooLargeException;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
+import com.ibm.watson.assistant.v2.model.MessageOutput;
 import com.ibm.watson.assistant.v2.model.MessageResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,11 +37,11 @@ public class CandidatoController {
     }
 
     @PostMapping("/api/message")
-    public Response<MessageResponse> postMessage(@RequestBody MessageResponse response) {
+    public Response<MessageResponse> postMessage(@RequestBody MessageOutput response) {
         try {
 
-            log.info("aaaaa: ", response.getContext());
-            log.info("aaaaa: ", response.getOutput());
+            log.info("aaaaa: ", response.getDebug());
+            log.info("aaaaa: ", response.getEntities());
 
 //            String text = (messageInput.text() == null) ? "" : messageInput.text();
 //            String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
