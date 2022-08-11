@@ -40,7 +40,7 @@ public class CandidatoController {
     public Response<MessageResponse> postMessage(@RequestBody MessageResponse response) {
         try {
 
-            log.info("TESTE: ", response);
+            log.info("TESTE: ", response.getOutput().getEntities().toString());
 
 //            String text = (messageInput.text() == null) ? "" : messageInput.text();
 //            String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
