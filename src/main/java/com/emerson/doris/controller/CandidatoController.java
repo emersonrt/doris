@@ -37,11 +37,10 @@ public class CandidatoController {
     }
 
     @PostMapping("/api/message")
-    public Response<MessageResponse> postMessage(@RequestBody MessageOutput output) {
+    public Response<MessageResponse> postMessage(@RequestBody MessageResponse response) {
         try {
 
-            log.info("TESTE: ", output);
-            log.info("aaaaa: ", output.getEntities());
+            log.info("TESTE: ", response);
 
 //            String text = (messageInput.text() == null) ? "" : messageInput.text();
 //            String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
