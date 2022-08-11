@@ -1,5 +1,6 @@
 package com.emerson.doris.controller;
 
+import com.emerson.doris.dto.TesteDto;
 import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.NotFoundException;
 import com.ibm.cloud.sdk.core.service.exception.RequestTooLargeException;
@@ -37,10 +38,10 @@ public class CandidatoController {
     }
 
     @PostMapping("/api/message")
-    public Response<MessageResponse> postMessage(@RequestBody MessageResponse response) {
+    public Response<MessageResponse> postMessage(@RequestBody TesteDto response) {
         try {
 
-            log.info("TESTE: ", response.getOutput().getEntities().toString());
+            log.info("TESTE: ", response.toString());
 
 //            String text = (messageInput.text() == null) ? "" : messageInput.text();
 //            String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
