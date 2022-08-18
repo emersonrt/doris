@@ -46,7 +46,7 @@ public class CandidatoController {
     }
 
     @PostMapping(path = "/api/message", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Response<MessageResponse> postMessage(HttpEntity<String> httpEntity) {
+    public Response<MessageResponse> postMessage(@RequestBody HttpEntity<String> httpEntity) {
         try {
 
             String json = httpEntity.getBody();
