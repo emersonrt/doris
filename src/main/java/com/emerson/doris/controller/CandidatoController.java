@@ -19,7 +19,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("candidato")
@@ -46,10 +49,10 @@ public class CandidatoController {
     }
 
     @PostMapping(path = "/api/message", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Response<MessageResponse> postMessage(@RequestBody HttpEntity<String> httpEntity) {
+    public Response<MessageResponse> postMessage(RequestEntity<String> requestEntity) {
         try {
 
-            String json = httpEntity.getBody();
+            String json = requestEntity.getBody();
             log.info("json:", json);
 //            log.info("TESTE: ", response.toString());
 
