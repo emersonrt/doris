@@ -1,16 +1,24 @@
 package com.emerson.doris.controller;
 
-import com.emerson.doris.dto.TesteDto;
 import com.ibm.cloud.sdk.core.http.Response;
+import com.ibm.cloud.sdk.core.http.ServiceCallback;
+import com.ibm.cloud.sdk.core.security.Authenticator;
+import com.ibm.cloud.sdk.core.security.IamAuthenticator;
 import com.ibm.cloud.sdk.core.service.exception.NotFoundException;
 import com.ibm.cloud.sdk.core.service.exception.RequestTooLargeException;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
-import com.ibm.watson.assistant.v2.model.MessageOutput;
-import com.ibm.watson.assistant.v2.model.MessageResponse;
+import com.ibm.watson.assistant.v1.Assistant;
+import com.ibm.watson.assistant.v1.model.MessageInput;
+import com.ibm.watson.assistant.v1.model.MessageOptions;
+import com.ibm.watson.assistant.v1.model.MessageResponse;
+import io.reactivex.Single;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -37,11 +45,13 @@ public class CandidatoController {
         return "Hello World!!!";
     }
 
-    @PostMapping("/api/message")
-    public Response<MessageResponse> postMessage(@RequestBody TesteDto response) {
+    @PostMapping(path = "/api/message", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Response<MessageResponse> postMessage(HttpEntity<String> httpEntity) {
         try {
 
-            log.info("TESTE: ", response.toString());
+            String json = httpEntity.getBody();
+            log.info("json:", json);
+//            log.info("TESTE: ", response.toString());
 
 //            String text = (messageInput.text() == null) ? "" : messageInput.text();
 //            String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
@@ -70,3 +80,5 @@ public class CandidatoController {
     }
 
 }
+
+
