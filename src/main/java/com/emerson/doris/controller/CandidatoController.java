@@ -1,54 +1,50 @@
 package com.emerson.doris.controller;
 
+import com.emerson.doris.dto.CandidatoDTO;
+import com.emerson.doris.form.CandidatoForm;
+import com.emerson.doris.service.CandidatoService;
 import com.ibm.cloud.sdk.core.http.Response;
-import com.ibm.cloud.sdk.core.http.ServiceCallback;
-import com.ibm.cloud.sdk.core.security.Authenticator;
-import com.ibm.cloud.sdk.core.security.IamAuthenticator;
 import com.ibm.cloud.sdk.core.service.exception.NotFoundException;
 import com.ibm.cloud.sdk.core.service.exception.RequestTooLargeException;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
-import com.ibm.watson.assistant.v1.Assistant;
-import com.ibm.watson.assistant.v1.model.MessageInput;
-import com.ibm.watson.assistant.v1.model.MessageOptions;
 import com.ibm.watson.assistant.v1.model.MessageResponse;
-import io.reactivex.Single;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping("candidato")
 public class CandidatoController {
 
-    @Value("${ibm.assistant.version.date}")
-    private String assistantVersionDate;
-
-    @Value("${ibm.assistant.workspace.id}")
-    private String assistantWorkspace;
-
-//    private Assistant service;
-
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-//    @PostConstruct
-//    public void init() {
-//        service = new Assistant( assistantVersionDate );
-//    }
+    private final CandidatoService service;
 
-    @GetMapping("teste")
-    public String teste() {
-        return "Hello World!!!";
+    @Autowired
+    public CandidatoController(CandidatoService service) {
+        this.service = service;
     }
 
-    @PostMapping(path = "/api/message", consumes = MediaType.APPLICATION_JSON_VALUE)
+    //retornar o DTO criado
+    @PostMapping
+    public ResponseEntity<CandidatoDTO> create(@RequestBody CandidatoForm form) {
+        CandidatoDTO dto = service.cadastrar(form);
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CandidatoDTO>> getAll() {
+        return ResponseEntity.ok(service.buscarTodos());
+    }
+
+    @PostMapping(path = "/message", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Response<MessageResponse> postMessage(RequestEntity<String> requestEntity) {
         try {
 

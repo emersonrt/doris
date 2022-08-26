@@ -20,6 +20,7 @@ public class Candidato {
 
     private String nome;
     private LocalDate dataNascimento;
+    private LocalDate dataCadastro = LocalDate.now();
     private String telefoneCelular;
     private String email;
     private String endereco;
