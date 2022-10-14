@@ -32,50 +32,15 @@ public class CandidatoController {
         this.service = service;
     }
 
-    //retornar o DTO criado
     @PostMapping
     public ResponseEntity<CandidatoDTO> create(@RequestBody CandidatoForm form) {
         CandidatoDTO dto = service.cadastrar(form);
-        return new ResponseEntity<>(dto, HttpStatus.CREATED);
+        return ResponseEntity.ok(dto);
     }
 
     @GetMapping
     public ResponseEntity<List<CandidatoDTO>> getAll() {
         return ResponseEntity.ok(service.buscarTodos());
-    }
-
-    @PostMapping(path = "/message", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Response<MessageResponse> postMessage(RequestEntity<String> requestEntity) {
-        try {
-
-            String json = requestEntity.getBody();
-            log.info("json:", json);
-//            log.info("TESTE: ", response.toString());
-
-//            String text = (messageInput.text() == null) ? "" : messageInput.text();
-//            String messageType = (messageInput.messageType() == null) ? "" : messageInput.messageType();
-//            String suggestionIdType = (messageInput.suggestionId() == null) ? "" : messageInput.suggestionId();
-
-//            log.info("text", text);
-//            log.info("messageType", messageType);
-//            log.info("suggestionIdType", suggestionIdType);
-
-//            MessageOptions options =
-//                    new MessageOptions.Builder( assistantWorkspace,  ).build();
-
-//            Response<MessageResponse> response = service.message(options).execute();
-            return null;
-
-        } catch (NotFoundException e) {
-            log.error("NotFoundException", e);
-            throw e;
-        } catch (RequestTooLargeException e) {
-            log.error("RequestTooLargeException", e);
-            throw e;
-        } catch (ServiceResponseException e) {
-            log.error("ServiceResponseException", e);
-            throw e;
-        }
     }
 
 }
