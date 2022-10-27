@@ -3,17 +3,9 @@ package com.emerson.doris.controller;
 import com.emerson.doris.dto.CandidatoDTO;
 import com.emerson.doris.form.CandidatoForm;
 import com.emerson.doris.service.CandidatoService;
-import com.ibm.cloud.sdk.core.http.Response;
-import com.ibm.cloud.sdk.core.service.exception.NotFoundException;
-import com.ibm.cloud.sdk.core.service.exception.RequestTooLargeException;
-import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
-import com.ibm.watson.assistant.v1.model.MessageResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +27,7 @@ public class CandidatoController {
     @PostMapping
     public ResponseEntity<CandidatoDTO> create(@RequestBody CandidatoForm form) {
         CandidatoDTO dto = service.cadastrar(form);
+        log.info("Candidato cadastrado: " + dto.toString());
         return ResponseEntity.ok(dto);
     }
 

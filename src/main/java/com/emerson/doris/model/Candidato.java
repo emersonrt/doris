@@ -1,7 +1,5 @@
 package com.emerson.doris.model;
 
-import com.emerson.doris.form.*;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -21,12 +19,13 @@ public class Candidato {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String nome;
-
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    @Column(nullable = false)
     private LocalDate dataNascimento;
-
+    @Column(nullable = false)
     private String telefoneCelular;
+    @Column(nullable = false)
     private String email;
 
     @ElementCollection
@@ -40,11 +39,16 @@ public class Candidato {
 
     @ElementCollection
     private List<String> linksRelevantes = new java.util.ArrayList<>();
+
+    @Column(nullable = false)
     private String cargaHoraria;
+    @Column(nullable = false)
     private String turno;
+    @Column(nullable = false)
     private String modalidadeTrabalho;
     private String cidadeResidencia;
     private Boolean disponibilidadeRealocacao;
+    @Column(nullable = false)
     private String areaInteresse;
 
     @ElementCollection

@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
 @Service
 public class CandidatoServiceImpl implements CandidatoService {
 
-    private CandidatoRepository candidatoRepository;
-    private ModelMapper mapper;
+    private final CandidatoRepository candidatoRepository;
+    private final ModelMapper mapper;
 
     @Autowired
     public CandidatoServiceImpl(CandidatoRepository candidatoRepository, ModelMapper mapper) {

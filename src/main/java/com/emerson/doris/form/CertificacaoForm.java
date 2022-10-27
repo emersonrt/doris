@@ -14,7 +14,7 @@ public class CertificacaoForm {
     private String organizacaoEmissora;
     private String urlCodigo;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataEmissao;
 
 }
