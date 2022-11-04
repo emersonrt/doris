@@ -1,6 +1,8 @@
 package com.emerson.doris.service.impl;
 
 import com.emerson.doris.dto.CandidatoDTO;
+import com.emerson.doris.dto.CandidatoPaginacaoDTO;
+import com.emerson.doris.dto.converter.CandidatoConverter;
 import com.emerson.doris.form.CandidatoForm;
 import com.emerson.doris.model.*;
 import com.emerson.doris.repository.CandidatoRepository;
@@ -8,6 +10,8 @@ import com.emerson.doris.service.CandidatoService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -75,5 +79,10 @@ public class CandidatoServiceImpl implements CandidatoService {
         return candidatos.stream()
                 .map(candidato -> mapper.map(candidato, CandidatoDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<CandidatoPaginacaoDTO> buscaPaginada(Pageable pageable) {
+        return candidatoRepository.findAll(pageable).map(CandidatoConverter::convert);
     }
 }
