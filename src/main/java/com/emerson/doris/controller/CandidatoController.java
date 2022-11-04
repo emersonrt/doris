@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,9 +40,14 @@ public class CandidatoController {
         return ResponseEntity.ok(service.buscaPaginada(pageable));
     }
 
-    @GetMapping
-    public ResponseEntity<List<CandidatoDTO>> getAll() {
-        return ResponseEntity.ok(service.buscarTodos());
+//    @GetMapping
+//    public ResponseEntity<List<CandidatoDTO>> getAll() {
+//        return ResponseEntity.ok(service.buscarTodos());
+//    }
+
+    @GetMapping()
+    public ResponseEntity<CandidatoDTO> getById(Integer id) {
+        return ResponseEntity.ok(service.buscarPorId(id));
     }
 
 }

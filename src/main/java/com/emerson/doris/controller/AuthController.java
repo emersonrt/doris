@@ -18,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,18 +58,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+    @Transactional(readOnly = true)
     public ResponseEntity<?> autenticarUsuario(@Valid @RequestBody LoginForm loginForm) {
-
-        //MOCK
-//        Set<String> perfis = new HashSet<String>();
-//        perfis.add("admin");
-//
-//        cadastrarUsuario(new CadastroUsuarioForm(
-//                "admin",
-//                "admin@gmail.com",
-//                perfis,
-//                "admin"));
-        //MOCK
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginForm.getUsername(), loginForm.getPassword()));
@@ -91,6 +82,7 @@ public class AuthController {
     }
 
     @PostMapping("/cadastro")
+    @Transactional()
     public ResponseEntity<?> cadastrarUsuario(@Valid @RequestBody CadastroUsuarioForm cadastroForm) {
         if (usuarioRepository.existsByUsername(cadastroForm.getUsername())) {
             return ResponseEntity

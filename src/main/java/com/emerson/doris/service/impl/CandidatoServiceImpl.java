@@ -12,6 +12,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -74,6 +75,7 @@ public class CandidatoServiceImpl implements CandidatoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CandidatoDTO> buscarTodos() {
         List<Candidato> candidatos = candidatoRepository.findAll();
         return candidatos.stream()
@@ -82,7 +84,16 @@ public class CandidatoServiceImpl implements CandidatoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<CandidatoPaginacaoDTO> buscaPaginada(Pageable pageable) {
         return candidatoRepository.findAll(pageable).map(CandidatoConverter::convert);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public CandidatoDTO buscarPorId(long idCandidato) {
+        Candidato record = candidatoRepository.findById(idCandidato)
+                .orElseThrow(() -> new ResourceNotFoundException("Candidato não encontrado!"));
+        return mapper.map(record, CandidatoDTO.class);
     }
 }
