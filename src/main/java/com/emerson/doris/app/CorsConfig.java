@@ -10,9 +10,9 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:4200")
-                .allowedOrigins("https://master--silver-mooncake-64c94b.netlify.app/")//RH - ADMIN
-                .allowedOrigins("https://master--melodic-melba-a23351.netlify.app/")//CHATBOT
+//                .allowedOrigins("http://localhost:4200")
+//                .allowedOrigins("https://master--silver-mooncake-64c94b.netlify.app/")//RH - ADMIN
+//                .allowedOrigins("https://master--melodic-melba-a23351.netlify.app/")//CHATBOT
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
     }
 
