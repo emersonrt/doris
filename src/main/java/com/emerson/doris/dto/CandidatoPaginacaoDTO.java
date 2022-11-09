@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -15,7 +16,7 @@ public class CandidatoPaginacaoDTO {
 
     private Long idCandidato;
     private String nome;
-    private String email;
+    private LocalDate dataCadastro;
     private List<String> hardSkills;
     private List<String> softSkills;
     private String areaInteresse;

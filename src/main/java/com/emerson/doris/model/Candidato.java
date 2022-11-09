@@ -24,6 +24,8 @@ public class Candidato {
     @Column(nullable = false)
     private LocalDate dataNascimento;
     @Column(nullable = false)
+    private LocalDate dataCadastro = LocalDate.now();
+    @Column(nullable = false)
     private String telefoneCelular;
     @Column(nullable = false)
     private String email;

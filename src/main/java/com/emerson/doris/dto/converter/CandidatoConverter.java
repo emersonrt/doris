@@ -18,7 +18,7 @@ public class CandidatoConverter {
                         candidato.getSoftSkills().stream().map(softSkill -> softSkill.getHabilidade()).collect(Collectors.toList()) : null)
                 .idiomas(candidato.getIdiomas() != null ?
                         candidato.getIdiomas().stream().map(idioma -> idioma.getIdioma()).collect(Collectors.toList()) : null)
-                .email(candidato.getEmail())
+                .dataCadastro(candidato.getDataCadastro())
                 .build();
     }
 }

@@ -1,61 +1,677 @@
-CREATE TABLE usuario
-(
-    id       BIGINT NOT NULL,
-    username VARCHAR(255),
-    email    VARCHAR(255),
-    password VARCHAR(255),
-    CONSTRAINT pk_usuario PRIMARY KEY (id)
-);
-
-ALTER TABLE usuario
-    ADD CONSTRAINT uc_67936a06fdfeb7cb9cc69068a UNIQUE (username);
-
-ALTER TABLE usuario
-    ADD CONSTRAINT uc_e1cc63ea3391cb0f8c624d971 UNIQUE (email);
-
-
-
-
-
-CREATE TABLE perfis_acesso
-(
-    id   BIGINT NOT NULL,
-    name VARCHAR(20),
-    CONSTRAINT pk_perfis_acesso PRIMARY KEY (id)
-);
-
-
-
-CREATE TABLE candidato
-(
-    id                         BIGINT       NOT NULL,
-    nome                       VARCHAR(255) NOT NULL,
-    data_nascimento            date         NOT NULL,
-    telefone_celular           VARCHAR(255) NOT NULL,
-    email                      VARCHAR(255) NOT NULL,
-    carga_horaria              VARCHAR(255) NOT NULL,
-    turno                      VARCHAR(255) NOT NULL,
-    modalidade_trabalho        VARCHAR(255) NOT NULL,
-    cidade_residencia          VARCHAR(255),
-    disponibilidade_realocacao BOOLEAN,
-    area_interesse             VARCHAR(255) NOT NULL,
-    pontos_fortes              VARCHAR(255),
-    pontos_fracos              VARCHAR(255),
-    informacao_relevante       VARCHAR(255),
-    CONSTRAINT pk_candidato PRIMARY KEY (id)
-);
+-- CREATE TABLE usuario
+-- (
+--     id       BIGINT NOT NULL,
+--     username VARCHAR(255),
+--     email    VARCHAR(255),
+--     password VARCHAR(255),
+--     CONSTRAINT pk_usuario PRIMARY KEY (id)
+-- );
+--
+-- ALTER TABLE usuario
+--     ADD CONSTRAINT uc_67936a06fdfeb7cb9cc69068a UNIQUE (username);
+--
+-- ALTER TABLE usuario
+--     ADD CONSTRAINT uc_e1cc63ea3391cb0f8c624d971 UNIQUE (email);
+--
+--
+--
+--
+--
+-- CREATE TABLE perfis_acesso
+-- (
+--     id   BIGINT NOT NULL,
+--     name VARCHAR(20),
+--     CONSTRAINT pk_perfis_acesso PRIMARY KEY (id)
+-- );
+--
+--
+--
+-- CREATE TABLE candidato
+-- (
+--     id                         BIGINT       NOT NULL,
+--     nome                       VARCHAR(255) NOT NULL,
+--     data_nascimento            date         NOT NULL,
+--     telefone_celular           VARCHAR(255) NOT NULL,
+--     email                      VARCHAR(255) NOT NULL,
+--     carga_horaria              VARCHAR(255) NOT NULL,
+--     turno                      VARCHAR(255) NOT NULL,
+--     modalidade_trabalho        VARCHAR(255) NOT NULL,
+--     cidade_residencia          VARCHAR(255),
+--     disponibilidade_realocacao BOOLEAN,
+--     area_interesse             VARCHAR(255) NOT NULL,
+--     pontos_fortes              VARCHAR(255),
+--     pontos_fracos              VARCHAR(255),
+--     informacao_relevante       VARCHAR(255),
+--     CONSTRAINT pk_candidato PRIMARY KEY (id)
+-- );
 
 
 INSERT INTO public.perfis_acesso (id, name) VALUES (1, 'ADMIN');
 INSERT INTO public.perfis_acesso (id, name) VALUES (2, 'USER');
 INSERT INTO public.usuario (id, username, email, password) VALUES (1, 'admin', 'admin@gmail.com', '$2a$10$.hzi0eqomONYpA2bpo/C9eWkXUZqH1AhSAfQj4gOwA.UwuRbO3uhi');
-INSERT INTO public.candidato (id, nome, data_nascimento, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (1, 'Émerson', '1999-03-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
-INSERT INTO public.candidato (id, nome, data_nascimento, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (6, 'Douglas T. Teste', '1988-05-17', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
-INSERT INTO public.candidato (id, nome, data_nascimento, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (11, 'Ana Paula Klein', '1999-05-17', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
-INSERT INTO public.candidato (id, nome, data_nascimento, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (15, 'Douglas T. Teste', '1988-05-17', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
-INSERT INTO public.candidato (id, nome, data_nascimento, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (19, 'Jon Snow', '1977-05-17', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
-INSERT INTO public.candidato (id, nome, data_nascimento, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (21, 'Émerson', '1999-03-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
-INSERT INTO public.candidato (id, nome, data_nascimento, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (27, 'Jon Snow', '1977-05-17', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
-INSERT INTO public.candidato (id, nome, data_nascimento, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (2, 'Douglas T. Teste', '1988-05-17', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
-INSERT INTO public.candidato (id, nome, data_nascimento, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (4, 'Ana Paula Klein', '1999-05-17', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
-INSERT INTO public.candidato (id, nome, data_nascimento, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (7, 'Ana Paula Klein', '1999-05-17', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+
+
+
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (1, 'Douglas 1', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Presencial', 'Santa Cruz do Sul', true, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (7, 'Douglas 2', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Presencial', 'Cachoeira do Sul', false, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (11, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (13, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (16, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (19, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (22, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (27, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (31, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (36, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (37, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (41, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (46, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (50, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (56, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (60, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (61, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (68, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (70, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (76, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (77, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (81, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (84, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (3, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (4, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (6, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (8, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (10, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (12, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (14, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (17, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (20, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (21, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (24, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (26, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (28, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (30, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (32, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (34, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (35, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (39, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (40, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (42, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (44, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (45, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (48, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (49, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (52, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (54, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (55, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (57, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (58, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (62, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (64, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (66, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (65, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (71, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (72, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (73, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (75, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (78, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (80, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (82, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (2, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (5, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (9, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (15, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (18, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (23, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (25, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (29, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (33, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (38, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (43, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (47, 'Jon Snow', '1977-05-17', '2022-11-09', '51998566598', 'snowland@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (51, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (53, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (59, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (63, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (67, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (69, 'Émerson', '1999-03-09', '2022-11-09', '51998567167', 'emersonrosateixeira@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, 'l', null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (74, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (79, 'Ana Paula Klein', '1999-05-17', '2022-11-09', '51998564456', 'anap@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+INSERT INTO public.candidato (id, nome, data_nascimento, data_cadastro, telefone_celular, email, carga_horaria, turno, modalidade_trabalho, cidade_residencia, disponibilidade_realocacao, area_interesse, pontos_fortes, pontos_fracos, informacao_relevante) VALUES (83, 'Douglas T. Teste', '1988-05-17', '2022-11-09', '51998564456', 'doug@hotmail.com', 'Turno integral', 'Manhã e noite', 'Remoto', null, null, 'Desenvolvimento de Software', null, null, null);
+
+
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (2, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (1, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (3, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (6, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (7, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (8, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (10, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (12, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (11, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (15, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (14, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (16, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (18, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (19, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (20, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (22, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (23, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (24, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (26, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (27, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (28, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (30, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (31, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (32, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (34, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (35, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (36, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (38, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (39, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (40, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (42, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (43, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (44, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (46, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (47, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (48, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (50, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (51, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (52, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (54, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (56, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (55, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (58, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (59, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (60, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (62, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (61, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (64, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (71, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (78, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (66, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (72, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (75, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (80, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (82, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (68, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (70, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (76, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (84, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (67, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (74, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (79, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (83, '2022-06-01', 'Formação Java', 'Alura', 'https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component');
+
+
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (2, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (3, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (1, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (6, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (7, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (8, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (10, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (12, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (11, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (15, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (14, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (16, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (18, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (20, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (19, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (22, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (23, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (24, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (26, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (27, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (28, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (30, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (31, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (32, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (34, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (35, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (36, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (38, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (39, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (40, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (42, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (43, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (44, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (46, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (47, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (48, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (50, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (51, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (52, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (54, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (55, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (56, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (59, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (58, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (60, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (62, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (61, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (64, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (66, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (68, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (67, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (70, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (71, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (72, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (74, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (75, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (76, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (79, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (78, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (80, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (83, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (82, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (84, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
+
+
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (2, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (4, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (3, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (1, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (5, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (6, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (7, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (8, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (9, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (10, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (12, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (11, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (13, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (15, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (14, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (16, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (17, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (18, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (20, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (19, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (21, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (22, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (23, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (24, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (25, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (26, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (27, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (28, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (29, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (30, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (31, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (32, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (33, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (34, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (35, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (36, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (37, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (38, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (40, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (39, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (41, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (42, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (43, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (44, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (45, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (46, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (47, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (48, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (49, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (50, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (51, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (52, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (53, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (54, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (56, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (55, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (57, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (58, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (59, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (60, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (63, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (61, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (62, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (64, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (65, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (66, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (67, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (68, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (69, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (70, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (71, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (72, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (73, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (74, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (75, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (76, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (77, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (79, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (78, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (80, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (81, '2016-12-01', '2025-12-01', 'asdsaads', 'unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (83, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (82, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+INSERT INTO public.candidato_formacoes (candidato_id, data_inicio, data_termino, nome_curso, nome_instituicao, tipo_graduacao) VALUES (84, '2016-12-01', '2025-12-01', 'Teste', 'Unisc', 'Licenciatura');
+
+
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (2, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (2, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (2, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (2, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (4, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (3, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (1, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (1, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (5, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (6, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (7, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (7, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (8, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (8, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (8, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (8, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (9, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (10, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (10, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (12, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (11, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (11, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (11, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (11, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (13, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (15, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (14, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (14, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (15, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (15, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (15, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (16, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (17, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (18, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (20, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (19, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (18, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (19, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (18, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (18, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (21, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (22, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (22, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (22, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (22, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (23, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (23, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (24, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (25, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (26, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (26, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (26, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (26, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (27, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (28, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (27, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (29, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (30, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (30, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (31, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (32, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (32, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (32, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (32, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (33, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (34, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (34, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (34, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (34, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (35, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (36, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (36, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (37, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (38, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (38, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (38, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (38, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (39, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (40, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (40, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (41, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (42, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (42, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (42, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (42, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (43, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (43, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (44, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (45, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (46, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (46, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (46, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (47, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (46, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (48, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (48, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (49, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (50, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (50, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (50, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (50, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (51, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (51, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (52, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (53, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (54, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (54, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (54, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (54, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (56, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (55, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (55, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (57, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (58, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (59, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (59, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (60, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (59, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (60, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (59, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (63, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (61, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (62, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (62, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (61, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (61, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (61, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (64, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (65, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (66, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (66, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (66, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (66, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (67, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (67, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (68, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (69, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (70, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (71, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (70, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (71, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (70, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (70, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (72, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (73, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (74, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (74, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (74, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (74, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (75, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (76, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (75, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (77, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (79, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (78, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (79, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (78, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (79, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (79, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (80, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (81, 'adsads', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (83, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (82, 'Java', 3);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (83, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (82, 'PHP', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (82, 'Angular', 1);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (82, 'AngularJS', 2);
+INSERT INTO public.candidato_hard_skills (candidato_id, habilidade, tempo_experiencia) VALUES (84, 'PHP', 2);
+
+
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (2, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (4, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (5, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (8, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (9, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (11, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (13, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (15, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (17, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (18, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (21, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (22, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (25, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (26, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (29, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (32, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (33, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (34, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (37, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (38, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (41, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (42, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (45, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (46, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (49, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (50, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (53, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (54, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (57, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (59, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (63, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (61, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (65, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (66, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (69, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (70, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (73, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (74, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (77, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (79, 'Inglês', 'Proficiência operativa eficaz');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (81, 'Espanhol', 'Avançado');
+INSERT INTO public.candidato_idiomas (candidato_id, idioma, nivel_fluencia) VALUES (82, 'Inglês', 'Proficiência operativa eficaz');
+
+
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (2, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (2, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (3, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (3, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (1, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (6, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (6, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (7, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (8, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (8, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (10, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (12, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (12, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (11, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (11, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (14, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (15, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (15, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (16, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (16, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (20, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (20, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (19, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (18, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (18, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (22, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (22, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (23, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (24, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (24, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (26, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (28, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (26, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (27, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (28, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (30, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (31, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (31, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (32, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (32, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (34, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (34, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (35, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (35, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (36, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (39, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (38, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (39, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (40, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (38, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (42, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (42, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (43, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (44, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (44, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (47, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (47, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (46, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (48, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (46, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (50, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (50, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (51, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (52, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (52, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (54, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (54, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (56, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (55, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (56, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (58, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (58, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (60, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (59, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (59, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (62, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (61, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (61, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (64, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (64, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (66, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (66, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (67, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (68, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (68, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (71, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (72, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (70, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (72, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (70, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (74, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (74, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (76, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (76, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (75, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (78, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (79, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (79, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (80, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (80, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (83, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (82, 'Comunicação');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (82, 'Resolução de Problemas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (84, 'Habilidade com Espadas');
+INSERT INTO public.candidato_soft_skills (candidato_id, habilidade) VALUES (84, 'Comunicação');
+
+INSERT INTO public.candidato_links_relevantes (candidato_id, links_relevantes) VALUES (1, 'https://ng-matero.github.io/ng-matero/dashboard');

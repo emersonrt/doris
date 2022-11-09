@@ -40,11 +40,6 @@ public class CandidatoController {
         return ResponseEntity.ok(service.buscaPaginada(pageable));
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<CandidatoDTO>> getAll() {
-//        return ResponseEntity.ok(service.buscarTodos());
-//    }
-
     @GetMapping()
     public ResponseEntity<CandidatoDTO> getById(Integer id) {
         return ResponseEntity.ok(service.buscarPorId(id));

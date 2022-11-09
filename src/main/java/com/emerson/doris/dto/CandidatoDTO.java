@@ -17,6 +17,7 @@ public class CandidatoDTO {
     private Long id;
     private String nome;
     private LocalDate dataNascimento;
+    private LocalDate dataCadastro;
     private String telefoneCelular;
     private String email;
     private List<HardSkillDTO> hardSkills;
