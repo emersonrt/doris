@@ -5,7 +5,11 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAmount;
 import java.util.List;
 
 @Getter
@@ -24,7 +28,7 @@ public class Candidato {
     @Column(nullable = false)
     private LocalDate dataNascimento;
     @Column(nullable = false)
-    private LocalDate dataCadastro = LocalDate.now();
+    private LocalDate dataCadastro = Instant.now().atZone(ZoneId.of("America/Sao_Paulo")).toLocalDate();
     @Column(nullable = false)
     private String telefoneCelular;
     @Column(nullable = false)
