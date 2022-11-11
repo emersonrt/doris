@@ -2,6 +2,7 @@ package com.emerson.doris.controller;
 
 import com.emerson.doris.dto.CandidatoDTO;
 import com.emerson.doris.dto.CandidatoPaginacaoDTO;
+import com.emerson.doris.enums.DataCadastroEnum;
 import com.emerson.doris.form.CandidatoForm;
 import com.emerson.doris.model.Candidato;
 import com.emerson.doris.service.CandidatoService;
@@ -14,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("candidato")
@@ -38,9 +41,21 @@ public class CandidatoController {
     @GetMapping("paginado")
     public ResponseEntity<Page<CandidatoPaginacaoDTO>> listaPaginada(
             @RequestParam(defaultValue = "") String nome,
+            @RequestParam(defaultValue = "") String areaInteresse,
+            @RequestParam(defaultValue = "") String dataCadastro,
+            @RequestParam(defaultValue = "") List<String> idiomas,
+            @RequestParam(defaultValue = "") List<String> hardSkills,
+            @RequestParam(defaultValue = "") List<String> softSkills,
             Pageable pageable
     ) {
-        Specification<Candidato> t = FiltroPaginacaoSpec.getCandidatoPorFiltrosSpec(nome);
+        Specification<Candidato> t = FiltroPaginacaoSpec.getCandidatoPorFiltrosSpec(
+                nome,
+                areaInteresse,
+                DataCadastroEnum.fromString(dataCadastro),
+                idiomas,
+                hardSkills,
+                softSkills
+        );
         return ResponseEntity.ok(service.buscaPaginada(t, pageable));
     }
 
