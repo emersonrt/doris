@@ -200,7 +200,7 @@ INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, or
 INSERT INTO public.candidato_certificacoes (candidato_id, data_emissao, nome, organizacao_emissora, url_codigo) VALUES (83, '2022-06-01', 'Formação Java', 'Alura', 'https://www.youtube.com/?hl=pt&gl=BR');
 
 
-INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (2, '2021-11-01', null, "uma descrição aleatória", 'BRQ Digital Solutions', 'Programador Pleno');
+INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (2, '2021-11-01', null, 'uma descrição aleatória', 'BRQ Digital Solutions', 'Programador Pleno');
 INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (3, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
 INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (1, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
 INSERT INTO public.candidato_experiencias (candidato_id, data_inicio, data_termino, descricao, empresa_organizacao, titulo_cargo) VALUES (6, '2021-11-01', null, null, 'BRQ Digital Solutions', 'Programador Pleno');
