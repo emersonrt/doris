@@ -16,7 +16,5 @@ public interface CandidatoService {
 
     Page<CandidatoPaginacaoDTO> buscaPaginada(Specification<Candidato> spec, Pageable pageable);
 
-    List<CandidatoDTO> buscarTodos();
-
     CandidatoDTO buscarPorId(long idCandidato);
 }

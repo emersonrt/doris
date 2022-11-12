@@ -3,12 +3,7 @@ package com.emerson.doris.controller;
 import com.emerson.doris.app.security.jwt.JwtUtils;
 import com.emerson.doris.app.security.services.UserDetailsImpl;
 import com.emerson.doris.dto.JwtResponse;
-import com.emerson.doris.dto.MensagemDTO;
-import com.emerson.doris.form.CadastroUsuarioForm;
 import com.emerson.doris.form.LoginForm;
-import com.emerson.doris.model.PerfisAcesso;
-import com.emerson.doris.model.Usuario;
-import com.emerson.doris.model.enums.EPerfisAcesso;
 import com.emerson.doris.repository.PerfisAcessoRepository;
 import com.emerson.doris.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController

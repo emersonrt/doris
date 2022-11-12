@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Type;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CandidatoServiceImpl implements CandidatoService {
@@ -73,15 +72,6 @@ public class CandidatoServiceImpl implements CandidatoService {
             return null;
         }
         return mapper.map(source, destinationType);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<CandidatoDTO> buscarTodos() {
-        List<Candidato> candidatos = candidatoRepository.findAll();
-        return candidatos.stream()
-                .map(candidato -> mapper.map(candidato, CandidatoDTO.class))
-                .collect(Collectors.toList());
     }
 
     @Override
