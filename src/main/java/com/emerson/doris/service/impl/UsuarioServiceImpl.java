@@ -1,6 +1,5 @@
 package com.emerson.doris.service.impl;
 
-import com.emerson.doris.dto.MensagemDTO;
 import com.emerson.doris.form.CadastroUsuarioForm;
 import com.emerson.doris.model.PerfisAcesso;
 import com.emerson.doris.model.Usuario;
@@ -14,7 +13,6 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.HashSet;
 import java.util.Set;
