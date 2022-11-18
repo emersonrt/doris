@@ -64,6 +64,11 @@ public class CandidatoController {
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
+    @GetMapping("wakeup")
+    public ResponseEntity<Boolean> wakeUpHeroku() {
+        return ResponseEntity.ok(true);
+    }
+
 }
 
 
